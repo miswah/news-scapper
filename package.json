@@ -1,0 +1,29 @@
+{
+  "name": "news-scapper",
+  "version": "1.0.0",
+  "description": "an app to scrap news of diffrent site and store it in monogodb",
+  "main": "app.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/obeymyshinnyrod/news-scapper.git"
+  },
+  "keywords": [
+    "Node",
+    "scapper"
+  ],
+  "author": "Miswah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/obeymyshinnyrod/news-scapper/issues"
+  },
+  "homepage": "https://github.com/obeymyshinnyrod/news-scapper#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cheerio": "^1.0.0-rc.10",
+    "express": "^4.17.1"
+  }
+}
