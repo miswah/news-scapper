@@ -1,0 +1,28 @@
+const axios = require("axios");
+const cheerio = require("cheerio");
+
+const THEHINDU = "https://www.thehindu.com/";
+
+const articles = [];
+
+module.exports = {
+  scrappTHEHINDU: async () => {
+    axios(THEHINDU)
+      .then((data) => {
+        const HTML = data.data;
+        const $ = cheerio.load(HTML);
+        $("h3", HTML).each((i, element) => {
+          const title = $(element).text().replace(/\s\s+/g, "");
+          const url = $(element).find("a").attr("href");
+          articles.push([
+            {
+              title,
+              url,
+            },
+          ]);
+        });
+        console.log(articles);
+      })
+      .catch((err) => console.log(err));
+  },
+};

@@ -8,6 +8,7 @@ const NDTV = require("./src/NDTV");
 const AAJTAK = require("./src/AAJTAK");
 const INDIANEXPRESS = require("./src/INDIANEXPRESS");
 const TIMESOFINDIA = require("./src/TIMESOFINDIA");
+const HINDU = require("./src/HINDU");
 
 require("dotenv").config();
 const mongoose = require("mongoose");
@@ -31,6 +32,7 @@ const app = express();
 // NDTV.scrappNDTV();
 // AAJTAK.scrappAAJTAK();
 // INDIANEXPRESS.scrappIndianExpress();
-TIMESOFINDIA.scrappTIMESOFINDIA();
+// TIMESOFINDIA.scrappTIMESOFINDIA();
+HINDU.scrappTHEHINDU();
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
