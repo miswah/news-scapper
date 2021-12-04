@@ -3,32 +3,27 @@ const express = require("express");
 const axios = require("axios");
 const cheerio = require("cheerio");
 
-const fs = require("fs");
+//import functions
+const NDTV = require("./src/NDTV");
+
+require("dotenv").config();
+const mongoose = require("mongoose");
+
+mongoose
+  .connect(process.env.MONGO_URI, {
+    dbName: "nikhil",
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Database connection Success.");
+  })
+  .catch((err) => {
+    console.error("Mongo Connection Error", err);
+  });
 
 const app = express();
 
+NDTV.scrappNDTV();
+
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
-
-const NDTV = "https://www.ndtv.com/";
-
-const articles = [];
-axios(NDTV)
-  .then((data) => {
-    const HTML = data.data;
-    const $ = cheerio.load(HTML);
-
-    // fs.writeFileSync("test.txt", HTML);
-
-    $("h3", HTML).each((i, element) => {
-      const title = $(element).text().replace(/\s\s+/g, "");
-      const url = $(element).find("a").attr("href");
-      articles.push([
-        {
-          title,
-          url,
-        },
-      ]);
-    });
-    console.log(articles);
-  })
-  .catch((err) => console.log(err));
