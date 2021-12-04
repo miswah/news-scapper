@@ -1,13 +1,13 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 
-const NDTV = "https://www.ndtv.com/";
+const INDIANEXPRESS = "https://indianexpress.com/";
 
 const articles = [];
 
 module.exports = {
-  scrappNDTV: async () => {
-    axios(NDTV)
+  scrappIndianExpress: async () => {
+    axios(INDIANEXPRESS)
       .then((data) => {
         const HTML = data.data;
         const $ = cheerio.load(HTML);
