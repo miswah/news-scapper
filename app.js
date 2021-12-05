@@ -13,18 +13,18 @@ const HINDU = require("./src/HINDU");
 require("dotenv").config();
 const mongoose = require("mongoose");
 
-// mongoose
-//   .connect(process.env.MONGO_URI, {
-//     dbName: "nikhil",
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then(() => {
-//     console.log("Database connection Success.");
-//   })
-//   .catch((err) => {
-//     console.error("Mongo Connection Error", err);
-//   });
+mongoose
+  .connect(process.env.MONGO_URI, {
+    dbName: "scrapped-news",
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Database connection Success.");
+  })
+  .catch((err) => {
+    console.error("Mongo Connection Error", err);
+  });
 
 const app = express();
 
