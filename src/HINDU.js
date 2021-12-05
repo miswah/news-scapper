@@ -17,12 +17,14 @@ module.exports = {
             title,
             url,
           };
-          if (article != undefined || null) {
+          if (article.title != undefined || null) {
             newsSchema
               .find({})
               .then((data) => {
-                if (data[index].title == article.title) {
-                  console.log(`found it on index ${index}`);
+                if (data[index].title !== article.title) {
+                  newsSchema.create(article, (err, news) => {
+                    console.log(`New data created ${news}`);
+                  });
                 }
               })
               .catch((err) => console.log(err));
